@@ -19,7 +19,6 @@ import { Roles } from 'src/auth/decorators/roles.decorator';
 import { Role } from 'src/auth/enums/roles.enum';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 
-@UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
@@ -30,17 +29,22 @@ export class UsersController {
     return this.usersService.createUser(userDto);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.Admin)
   @Get()
   findAll(): Promise<User[]> {
     return this.usersService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.User)
   @Get(':id')
   findOne(@Param() id: number): Promise<User | null> {
     return this.usersService.findOneById(id);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.User)
   @Put()
   update(
     @Body() userDto: UserDto,
@@ -49,6 +53,8 @@ export class UsersController {
     return this.usersService.update(userDto, access_token);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.User)
   @Delete(':id')
   async remove(@Param() id: number): Promise<void> {
     await this.usersService.remove(id);

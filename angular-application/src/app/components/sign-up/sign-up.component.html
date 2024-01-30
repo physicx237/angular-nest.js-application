@@ -1,0 +1,32 @@
+<form class="sign-up" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <span class="p-float-label">
+    <input pInputText id="firstName" formControlName="firstName" />
+    <label for="firstName">Имя</label>
+  </span>
+
+  <span class="p-float-label">
+    <input pInputText id="lastName" formControlName="lastName" />
+    <label for="lastName">Фамилия</label>
+  </span>
+
+  <span class="p-float-label">
+    <input pInputText id="patronymic" formControlName="patronymic" />
+    <label for="patronymic">Отчество</label>
+  </span>
+
+  <span class="p-float-label">
+    <p-inputMask
+      mask="+7(999)999-99-99"
+      id="phoneNumber"
+      formControlName="phoneNumber"
+    ></p-inputMask>
+    <label for="phoneNumber">Номер телефона</label>
+  </span>
+
+  <span class="p-float-label">
+    <p-password formControlName="password" [feedback]="false"></p-password>
+    <label for="password">Пароль</label>
+  </span>
+
+  <p-button type="submit" label="Зарегистрироваться"></p-button>
+</form>
