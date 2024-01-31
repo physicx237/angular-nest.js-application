@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SignUpDto } from '../interfaces/sign-up.dto';
 import { SignUpServicePort } from '../domain/ports/sign-up-service.port';
-import { User } from '../types/user.type';
+import { User } from '../domain/models/user.model';
 
 @Injectable({
   providedIn: 'root',

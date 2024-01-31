@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { SignInDto } from '../interfaces/sign-in.dto';
 import { Token } from '../types/token.type';
 import { SignInServicePort } from '../domain/ports/sign-in-service.port';
-import { User } from '../types/user.type';
+import { User } from '../domain/models/user.model';
 
 @Injectable({
   providedIn: 'root',

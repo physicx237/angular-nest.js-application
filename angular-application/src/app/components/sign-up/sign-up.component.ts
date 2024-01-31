@@ -12,7 +12,7 @@ import {
 import { SignUpService } from '../../adapters/sign-up.service';
 import { Router } from '@angular/router';
 import { SignInService } from '../../adapters/sign-in.service';
-import { User } from '../../types/user.type';
+import { User } from '../../domain/models/user.model';
 import { SignInDto } from '../../interfaces/sign-in.dto';
 import { Token } from '../../types/token.type';
 

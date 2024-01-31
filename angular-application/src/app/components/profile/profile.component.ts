@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { SignInService } from '../../adapters/sign-in.service';
-import { User } from '../../types/user.type';
+import { User } from '../../domain/models/user.model';
 
 @Component({
   selector: 'app-profile',
