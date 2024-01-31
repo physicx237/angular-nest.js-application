@@ -10,13 +10,11 @@ export class AuthController {
 
   @UseGuards(LocalAuthGuard)
   @Post('sign-in')
-  async signIn(@Request() req, @Res({ passthrough: true }) res: Response) {
-    const tokens = await this.authService.login(req.user.phoneNumber);
-
-    res.cookie('refresh_token', tokens.refresh_token);
+  signIn(@Request() req, @Res({ passthrough: true }) res: Response) {
+    res.cookie('refresh_token', req.user.refresh_token);
 
     return {
-      access_token: tokens.access_token,
+      access_token: req.user.access_token,
     };
   }
 

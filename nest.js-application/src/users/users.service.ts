@@ -27,7 +27,11 @@ export class UsersService {
     user.password = password;
     user.role = Role.User;
 
-    return this.usersRepository.save(user);
+    const createdUser = await this.usersRepository.save(user);
+
+    createdUser.password = userDto.password;
+
+    return createdUser;
   }
 
   findAll(): Promise<User[]> {
@@ -38,8 +42,12 @@ export class UsersService {
     return this.usersRepository.findOneBy({ id });
   }
 
-  findOneByPhoneNumber(phoneNumber: string): Promise<User | null> {
-    return this.usersRepository.findOneBy({ phoneNumber });
+  async findOneByPhoneNumber(phoneNumber: string): Promise<User | null> {
+    const user = await this.usersRepository.findOneBy({
+      phoneNumber: phoneNumber,
+    });
+
+    return user;
   }
 
   async update(userDto: UserDto, access_token: string): Promise<UpdateResult> {

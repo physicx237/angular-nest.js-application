@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SignUpDto } from '../interfaces/sign-up.dto';
 import { SignUpServicePort } from '../domain/ports/sign-up-service.port';
+import { User } from '../types/user.type';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,6 @@ export class SignUpService implements SignUpServicePort {
   constructor(private httpClient: HttpClient) {}
 
   signUp(signUpDto: SignUpDto) {
-    return this.httpClient.post<any>(this.apiUrl, signUpDto);
+    return this.httpClient.post<User>(this.apiUrl, signUpDto);
   }
 }

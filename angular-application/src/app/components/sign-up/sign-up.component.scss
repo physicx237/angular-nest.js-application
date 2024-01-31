@@ -1,9 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
 .sign-up {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 40px;
+  gap: 35px;
   width: 98vw;
-  height: 94vh;
+  height: 76vh;
 }

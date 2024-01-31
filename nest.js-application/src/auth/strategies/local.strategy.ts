@@ -33,6 +33,11 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
       throw new UnauthorizedException();
     }
 
-    return user;
+    const tokens = await this.authService.login({
+      phoneNumber: user.phoneNumber,
+      password: password,
+    });
+
+    return tokens;
   }
 }

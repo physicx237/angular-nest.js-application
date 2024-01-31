@@ -10,6 +10,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { SignUpService } from '../../adapters/sign-up.service';
+import { Router } from '@angular/router';
+import { SignInService } from '../../adapters/sign-in.service';
+import { User } from '../../types/user.type';
+import { SignInDto } from '../../interfaces/sign-in.dto';
+import { Token } from '../../types/token.type';
 
 @Component({
   selector: 'app-sign-up',
@@ -49,13 +54,26 @@ export class SignUpComponent {
     }),
   });
 
-  constructor(private signUpService: SignUpService) {}
+  constructor(
+    private signUpService: SignUpService,
+    private signInService: SignInService,
+    private router: Router
+  ) {}
 
   onSubmit() {
     const signUpFormValue = this.signUpForm.getRawValue();
 
-    this.signUpService.signUp(signUpFormValue).subscribe((user) => {
-      console.log(user);
+    this.signUpService.signUp(signUpFormValue).subscribe((user: User) => {
+      const signInDto: SignInDto = {
+        phoneNumber: user.phoneNumber,
+        password: user.password,
+      };
+
+      this.signInService.signIn(signInDto).subscribe((token: Token) => {
+        localStorage.setItem('access_token', token.access_token);
+
+        this.router.navigateByUrl('/profile');
+      });
     });
   }
 }

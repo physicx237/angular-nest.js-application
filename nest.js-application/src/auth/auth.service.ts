@@ -26,9 +26,9 @@ export class AuthService {
     return user;
   }
 
-  async login(signDto: SignInDto) {
+  async login(signInDto: SignInDto) {
     const user = await this.usersService.findOneByPhoneNumber(
-      signDto.phoneNumber,
+      signInDto.phoneNumber,
     );
 
     const payload = {
@@ -37,7 +37,7 @@ export class AuthService {
       lastName: user.lastName,
       patronymic: user.patronymic,
       phoneNumber: user.phoneNumber,
-      password: user.password,
+      password: signInDto.password,
       role: user.role,
     };
 
