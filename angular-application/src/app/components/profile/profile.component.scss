@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-description {
+  margin-left: 10px;
+}
+
+.image {
+  height: 318px;
+  object-fit: cover;
+}

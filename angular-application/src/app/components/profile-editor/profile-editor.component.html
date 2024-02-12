@@ -1,10 +1,8 @@
-<header class="header">
-  <p-button (click)="signInPage()" label="Авторизация"></p-button>
-</header>
-
-<h1>Регистрация</h1>
-
-<form class="sign-up" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+<form
+  class="profile-editor"
+  [formGroup]="profileEditorForm"
+  (ngSubmit)="onSubmit()"
+>
   <span class="p-float-label">
     <input pInputText id="firstName" formControlName="firstName" />
     <label for="firstName">Имя</label>
@@ -34,5 +32,9 @@
     <label for="password">Пароль</label>
   </span>
 
-  <p-button type="submit" label="Зарегистрироваться"></p-button>
+  <p-button
+    [style]="{ width: '100%' }"
+    type="submit"
+    label="Сохранить"
+  ></p-button>
 </form>

@@ -1,9 +1,26 @@
-<p>Имя: {{ user.firstName }}</p>
+<div class="card flex justify-content-center">
+  <p-card
+    header="{{ user.firstName }} {{ user.lastName }}"
+    subheader="{{ user.phoneNumber }}"
+    [style]="{ width: '360px' }"
+  >
+    <ng-template pTemplate="header">
+      <img class="image" alt="Card" src="assets/images/1.jpg" />
+    </ng-template>
+    <p class="profile-description">
+      Google Developer Expert in Angular
+      <br />
+      <br />
+      Nest.js Core Team Member
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button
+        (click)="profileEditor()"
+        [style]="{ width: '100%' }"
+        label="Редактировать профиль"
+      ></p-button>
+    </ng-template>
+  </p-card>
+</div>
 
-<p>Фамилия: {{ user.lastName }}</p>
-
-<p>Отчество: {{ user.patronymic }}</p>
-
-<p>Номер телефона: {{ user.phoneNumber }}</p>
-
-<p>Пароль: {{ user.password }}</p>
+<p-button (click)="signInPage()" label="Выйти"></p-button>

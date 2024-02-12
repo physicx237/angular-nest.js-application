@@ -76,4 +76,8 @@ export class SignUpComponent {
       });
     });
   }
+
+  signInPage() {
+    this.router.navigateByUrl('/sign-in');
+  }
 }

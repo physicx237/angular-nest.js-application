@@ -1,1 +1,23 @@
-<p>sign-in works!</p>
+<header class="header">
+  <p-button (click)="signUpPage()" label="Регистрация"></p-button>
+</header>
+
+<h1>Авторизация</h1>
+
+<form class="sign-in" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+  <span class="p-float-label">
+    <p-inputMask
+      mask="+7(999)999-99-99"
+      id="phoneNumber"
+      formControlName="phoneNumber"
+    ></p-inputMask>
+    <label for="phoneNumber">Номер телефона</label>
+  </span>
+
+  <span class="p-float-label">
+    <p-password formControlName="password" [feedback]="false"></p-password>
+    <label for="password">Пароль</label>
+  </span>
+
+  <p-button type="submit" label="Войти"></p-button>
+</form>
